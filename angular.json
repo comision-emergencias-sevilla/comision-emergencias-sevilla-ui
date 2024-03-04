@@ -65,7 +65,8 @@
               "buildTarget": "comision-emergencia-sevilla-ui:build:production"
             },
             "development": {
-              "buildTarget": "comision-emergencia-sevilla-ui:build:development"
+              "buildTarget": "comision-emergencia-sevilla-ui:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

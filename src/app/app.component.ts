@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AppShellComponent } from './app-shell/app-shell.component';
+import { CsrfProtectionService } from './csrf/csrf-protection.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,6 @@ import { AppShellComponent } from './app-shell/app-shell.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  
+  csrfProtection = toSignal(inject(CsrfProtectionService).enable());
+
 }
