@@ -15,12 +15,5 @@ export class AppShellComponent {
   myself = toSignal(inject(UserService).myself());
 
   readonly sidebarOpen = signal(false);
-
-  profilePhotoUrl = computed(() => this.myself()?.profile_photo_url );
-
-  effect$ = effect(() => {
-    console.log('Current Myself: ' + JSON.stringify(this.myself()))
-    console.log('Current Photo Url: ' + this.myself()?.profile_photo_url)
-  });
   
 }
