@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, Signal, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,12 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class CsrfProtectionService {
 
-  http = inject(HttpClient);
+  readonly http = inject(HttpClient);
 
-  constructor() { }
-
-  enable(): Observable<String> {
-    return this.http.get<String>('/sanctum/csrf-cookie');
+  enable(): Signal<String | undefined> {
+    return toSignal(this.http.get<String>('/sanctum/csrf-cookie'));
   }
 
 }

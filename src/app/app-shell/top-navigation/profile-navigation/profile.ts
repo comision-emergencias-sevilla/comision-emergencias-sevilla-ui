@@ -1,4 +1,4 @@
-export interface Myself {
+export interface Profile {
     name: string;
     email: string;
     profile_photo_path: string;

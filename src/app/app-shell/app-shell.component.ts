@@ -1,19 +1,20 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
-import { UserService } from '../user/user.service';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
+import { DesktopSidebarComponent } from './desktop-sidebar/desktop-sidebar.component';
+import { TopNavigationComponent } from './top-navigation/top-navigation.component';
 
 @Component({
   selector: 'app-shell',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [
+    MobileMenuComponent,
+    DesktopSidebarComponent,
+    TopNavigationComponent
+  ],
   templateUrl: './app-shell.component.html',
-  styleUrl: './app-shell.component.scss'
+  styleUrl: './app-shell.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppShellComponent {
-
-  myself = toSignal(inject(UserService).myself());
-
-  readonly sidebarOpen = signal(false);
   
 }
